@@ -1,6 +1,6 @@
 {
   "name": "js_editor_p",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -17,8 +17,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@js_editor_p/local-client": "^1.0.0",
     "@js_editor_p/local-api": "^1.0.0",
+    "@js_editor_p/local-client": "^1.0.0",
     "commander": "^10.0.0"
   },
   "devDependencies": {
