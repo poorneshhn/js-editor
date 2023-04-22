@@ -1,6 +1,7 @@
 import { Command } from "commander";
 import { serve } from "@js_editor_p/local-api";
 import path from "path";
+import launchBrowser from "../utils/launchBrowser";
 interface LocalApiError {
   code: string;
 }
@@ -21,8 +22,11 @@ export const serveCommand = new Command()
         !isProduction
       );
       console.log(
-        `Opened the file ${filename}. Navigate to http://localhost:${options.port} in the browser to edit the file.`
+        `Opened the file ${filename} to edit on http://localhost:${options.port} in the browser.`
       );
+
+      const url = `http://localhost:${options.port}`;
+      launchBrowser(url);
     } catch (error) {
       const isLocalApiError = (err: any): err is LocalApiError => {
         return typeof err.code === "string";
