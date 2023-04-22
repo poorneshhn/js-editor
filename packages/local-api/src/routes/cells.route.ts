@@ -11,13 +11,13 @@ interface Cell {
   content: string;
   type: "text" | "code";
 }
-const createCellsRouter = (filename: string, dir: string): Router => {
+export const createCellsRouter = (filename: string, dir: string): Router => {
   const cellsRouter = express.Router();
   cellsRouter.use(express.json());
 
   const completePath = path.join(dir, filename);
 
-  cellsRouter.get("/", async (req, res) => {
+  cellsRouter.get("/cells", async (req, res) => {
     try {
       const file = await fs.readFile(completePath, { encoding: "utf-8" });
       res.send(JSON.parse(file));
@@ -38,7 +38,7 @@ const createCellsRouter = (filename: string, dir: string): Router => {
     }
   });
 
-  cellsRouter.post("/", async (req, res) => {
+  cellsRouter.post("/cells", async (req, res) => {
     const { cells }: { cells: Cell[] } = req.body;
     await fs.writeFile(completePath, JSON.stringify(cells), "utf-8");
 
@@ -46,5 +46,3 @@ const createCellsRouter = (filename: string, dir: string): Router => {
   });
   return cellsRouter;
 };
-
-export default createCellsRouter;

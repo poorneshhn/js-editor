@@ -1,9 +1,7 @@
 import express from "express";
 import { createProxyMiddleware } from "http-proxy-middleware";
 import path from "path";
-import createCellsRouter from "./routes/cells.route";
-
-const app = express();
+import { createCellsRouter } from "./routes/cells.route";
 
 export const serve = (
   port: number,
@@ -11,27 +9,26 @@ export const serve = (
   dir: string,
   useProxy: boolean
 ) => {
-  return new Promise((resolve, reject) => {
-    app.use("/cells", createCellsRouter(filename, dir));
-    if (useProxy) {
-      app.use(
-        createProxyMiddleware({
-          target: "http://localhost:3000",
-          logLevel: "silent",
-          ws: true,
-        })
-      );
-    } else {
-      const packagePath = require.resolve(
-        "@js_editor_p/local-client/build/index.html"
-      );
-      app.use(express.static(path.dirname(packagePath)));
-    }
+  const app = express();
 
-    app
-      .listen(port, () => {
-        console.log("Express Server running");
+  app.use(createCellsRouter(filename, dir));
+
+  if (useProxy) {
+    app.use(
+      createProxyMiddleware({
+        target: "http://localhost:3000",
+        logLevel: "silent",
+        ws: true,
       })
-      .on("error", reject);
+    );
+  } else {
+    const packagePath = require.resolve(
+      "@js_editor_p/local-client/build/index.html"
+    );
+    app.use(express.static(path.dirname(packagePath)));
+  }
+
+  return new Promise<void>((resolve, reject) => {
+    app.listen(port, resolve).on("error", reject);
   });
 };

@@ -9,11 +9,11 @@ const isProduction = process.env.NODE_ENV === "production";
 
 export const serveCommand = new Command()
   .command("serve [filename]")
-  .option("-p, --port <number>", "port to run server on", "4005")
   .description("open a file for editing")
+  .option("-p, --port <number>", "port to run server on", "4005")
   .action(async (filename = "notebook.js", options: { port: string }) => {
-    let dir = path.join(process.cwd(), path.dirname(filename));
     try {
+      const dir = path.join(process.cwd(), path.dirname(filename));
       await serve(
         parseInt(options.port),
         path.basename(filename),
