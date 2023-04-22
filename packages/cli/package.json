@@ -1,0 +1,28 @@
+{
+  "name": "js_editor_p",
+  "version": "1.0.0",
+  "description": "",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsc --watch --preserveWatchOutput",
+    "prepublishOnly": "esbuild src/index.ts --platform=node --outfile=dist/index.js --bundle --minify --define:process.env.NODE_ENV=\\\"production\\\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@js_editor_p/local-client": "^1.0.0"
+  },
+  "devDependencies": {
+    "@js_editor_p/local-api": "^1.0.0",
+    "@types/node": "^18.15.11",
+    "commander": "^10.0.0",
+    "esbuild": "0.8.26"
+  }
+}
