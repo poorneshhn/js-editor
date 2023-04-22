@@ -17,12 +17,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@js_editor_p/local-client": "^1.0.0",
     "@types/node": "^18.15.11",
     "commander": "^7.0.0",
-    "esbuild": "0.8.26"
+    "esbuild": "0.8.26",
+    "@js_editor_p/local-api": "^1.0.2"
   },
   "dependencies": {
-    "@js_editor_p/local-api": "^1.0.2"
+    "@js_editor_p/local-client": "^1.0.0"
   }
 }
