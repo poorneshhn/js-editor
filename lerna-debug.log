@@ -7,7 +7,7 @@
 0 silly argv }
 1 notice cli v3.22.1
 2 verbose rootPath /home/qburst/Desktop/Projects/online-js-editor
-3 error Error: Invalid package name "@phhn": name can only contain URL-friendly characters
+3 error Error: Invalid package name "@js_editor_p": name can only contain URL-friendly characters
 3 error     at invalidPackageName (/usr/lib/node_modules/lerna/node_modules/npm-package-arg/npa.js:86:15)
 3 error     at Result.setName (/usr/lib/node_modules/lerna/node_modules/npm-package-arg/npa.js:121:11)
 3 error     at new Result (/usr/lib/node_modules/lerna/node_modules/npm-package-arg/npa.js:111:23)
