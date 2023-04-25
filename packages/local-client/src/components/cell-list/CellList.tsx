@@ -17,7 +17,8 @@ const CellList: React.FC = () => {
 
   return (
     <div className="cell-list">
-      <AddCell forceVisible={cells.length === 0} previousCellId={null} />
+      <AddCell forceVisible={true} previousCellId={null} />
+      {/* <AddCell forceVisible={cells.length === 0} previousCellId={null} /> */}
       {cells.map((cell) => {
         return (
           <React.Fragment key={cell.id}>

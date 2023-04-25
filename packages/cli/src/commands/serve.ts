@@ -21,11 +21,12 @@ export const serveCommand = new Command()
         dir,
         !isProduction
       );
+      const url = `http://localhost:${options.port}`;
+
       console.log(
-        `Opened the file ${filename} to edit on http://localhost:${options.port} in the browser.`
+        `Opened the file ${filename} to edit on ${url} in the browser.`
       );
 
-      const url = `http://localhost:${options.port}`;
       launchBrowser(url);
     } catch (error) {
       const isLocalApiError = (err: any): err is LocalApiError => {
@@ -39,6 +40,8 @@ export const serveCommand = new Command()
         }
       } else if (error instanceof Error) {
         console.error("here is the problem", error.message);
+      } else {
+        console.log(error, "error");
       }
       process.exit(1);
     }
