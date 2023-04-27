@@ -9,4 +9,5 @@ export enum ActionTypes {
   FETCH_CELL_COMPLETE = "fetch_cells_complete",
   FETCH_CELL_ERROR = "fetch_cells_error",
   SAVE_CELL_ERROR = "save_cells_error",
+  SET_SHARE_CODE = "set_share_code",
 }

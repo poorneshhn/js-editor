@@ -5,15 +5,13 @@ const useCumulativeCode = (cellId: string) => {
   return useTypedSelector((state) => {
     const { data, order } = state.cells;
     const orderedData = order.map((id) => data[id]);
-    let show: string = showFunctionString;
-    let showFuncNoop = showNoop;
 
     let cumulativeCode = [];
     for (let code of orderedData) {
       if (code.id === cellId) {
-        cumulativeCode.push(show);
+        cumulativeCode.push(showFunctionString);
       } else {
-        cumulativeCode.push(showFuncNoop);
+        cumulativeCode.push(showNoop);
       }
       if (code.type === "code") {
         cumulativeCode.push(code.content);

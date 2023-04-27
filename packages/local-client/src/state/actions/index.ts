@@ -64,6 +64,12 @@ export interface SaveCellErrorAction {
   type: ActionTypes.SAVE_CELL_ERROR;
   payload: string;
 }
+
+export interface SetShareCodeAction {
+  type: ActionTypes.SET_SHARE_CODE;
+  payload: boolean;
+}
+
 export type Action =
   | MoveCellAction
   | UpdateCellAction
@@ -75,4 +81,5 @@ export type Action =
   | FetchCellAction
   | FetchCellCompleteAction
   | FetchCellErrorAction
-  | SaveCellErrorAction;
+  | SaveCellErrorAction
+  | SetShareCodeAction;

@@ -8,28 +8,40 @@ import { Cell } from "../../state";
 import useActions from "../../hooks/use-actions";
 import { useTypedSelector } from "../../hooks/use-typed-selector";
 import useCumulativeCode from "../../hooks/use-cumulative-code";
+import { showFunctionString } from "../../utils/utils";
 
 interface codeCellProps {
   cell: Cell;
 }
 const CodeCell: React.FC<codeCellProps> = ({ cell }) => {
+  const isShareCode = useTypedSelector(({ cells }) => cells.shareCode);
   const bundle = useTypedSelector((state) => state.bundles[cell.id]);
   const debounceInputCodeFieldTimer = useRef<any>(null);
   const { updateCell, createBundle } = useActions();
   const cumulativeCode = useCumulativeCode(cell.id);
+
   useEffect(() => {
+    let codeWithShow = showFunctionString + "\n" + cell.content;
     if (!bundle) {
-      createBundle(cell.id, cumulativeCode.join("\n"));
+      if (isShareCode) {
+        createBundle(cell.id, cumulativeCode.join("\n"));
+      } else {
+        createBundle(cell.id, codeWithShow);
+      }
       return;
     }
     clearTimeout(debounceInputCodeFieldTimer.current);
     debounceInputCodeFieldTimer.current = setTimeout(async () => {
-      createBundle(cell.id, cumulativeCode.join("\n"));
+      if (isShareCode) {
+        createBundle(cell.id, cumulativeCode.join("\n"));
+      } else {
+        createBundle(cell.id, codeWithShow);
+      }
     }, 1000);
 
     return () => clearTimeout(debounceInputCodeFieldTimer.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cumulativeCode.join("\n"), cell.id, createBundle]);
+  }, [cumulativeCode.join("\n"), cell.id, createBundle, isShareCode]);
 
   return (
     <ResizableComponent direction="vertical">

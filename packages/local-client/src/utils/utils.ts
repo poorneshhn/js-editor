@@ -10,7 +10,11 @@ var show = (value) => {
       rootElement.innerHTML = JSON.stringify(value);
     }
   } else {
-    rootElement.innerHTML = value;
+    const divElement = document.createElement("div");
+    divElement.setAttribute("class", "output");
+    divElement.innerHTML = value;
+    rootElement.appendChild(divElement);
+    // rootElement.innerHTML = value;
   }
 }`;
 

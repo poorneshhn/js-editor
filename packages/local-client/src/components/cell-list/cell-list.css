@@ -1,7 +1,12 @@
 .cell-list {
-  margin: 0 min(25px, 2.5vw) 25vh;
+  margin: 1rem min(25px, 2.5vw) 25vh;
 }
 
 .react-draggable-transparent-selection .cell-list {
   margin-bottom: 100vh;
+}
+
+.toggle-wrapper {
+  display: flex;
+  justify-content: flex-end;
 }

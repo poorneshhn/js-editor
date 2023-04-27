@@ -10,6 +10,7 @@ interface CellsState {
   data: {
     [key: string]: Cell;
   };
+  shareCode: boolean;
 }
 
 const initialState: CellsState = {
@@ -17,6 +18,7 @@ const initialState: CellsState = {
   error: "",
   order: [],
   data: {},
+  shareCode: false,
 };
 
 const reducer = produce((state: CellsState = initialState, action: Action) => {
@@ -80,6 +82,9 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
       return state;
     case ActionTypes.SAVE_CELL_ERROR:
       state.error = action.payload;
+      return state;
+    case ActionTypes.SET_SHARE_CODE:
+      state.shareCode = action.payload;
       return state;
     default:
       return state;

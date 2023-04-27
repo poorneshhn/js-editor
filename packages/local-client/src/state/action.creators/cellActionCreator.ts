@@ -7,6 +7,7 @@ import {
   Direction,
   InsertCellAfterAction,
   MoveCellAction,
+  SetShareCodeAction,
   UpdateCellAction,
 } from "../actions";
 import { Cell, CellTypes } from "../cell";
@@ -83,5 +84,12 @@ export const saveCells = () => {
       if (error instanceof Error)
         dispatch({ type: ActionTypes.SAVE_CELL_ERROR, payload: error.message });
     }
+  };
+};
+
+export const setShareCode = (shareCode: boolean): SetShareCodeAction => {
+  return {
+    type: ActionTypes.SET_SHARE_CODE,
+    payload: shareCode,
   };
 };
