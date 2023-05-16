@@ -1,6 +1,5 @@
 # js-editor
 
-# npm package link
 https://www.npmjs.com/package/js_editor_p
 
 This is a library which lets write and execute javaScript by launching a javaScript editor on your browser.
