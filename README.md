@@ -2,7 +2,7 @@
 
 https://www.npmjs.com/package/js_editor_p
 
-This is a library which lets write and execute javaScript by launching a javaScript editor on your browser.
+This is a library which lets you write and execute javaScript by launching a javaScript editor on your browser similar to jupyter notebook.
 
 To use, run the below command in your terminal
 
